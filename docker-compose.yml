@@ -1,0 +1,37 @@
+version: '3'
+
+services:
+  content-service:
+    build:
+      context: ./content-service
+    ports:
+      - "3001:3001"  # Expose the service's port
+    depends_on:
+      - mongodb  # Dependency on a shared MongoDB instance
+
+  user-service:
+    build:
+      context: ./user-service
+    ports:
+      - "3003:3003"  # Expose the service's port
+    depends_on:
+      - mongodb  # Dependency on a shared MongoDB instance
+
+  user-interaction-service:
+    build:
+      context: ./user-interaction-service
+    ports:
+      - "3002:3002"  # Expose the service's port
+    depends_on:
+      - mongodb  # Dependency on a shared MongoDB instance
+
+  mongodb:
+    image: mongo:latest
+    container_name: shared-mongodb  # Container name for the shared MongoDB instance
+    ports:
+      - "27017:27017"  # Expose MongoDB's port
+    volumes:
+      - mongodb-data:/data/db  # Mount a volume to persist data
+
+volumes:
+  mongodb-data:
