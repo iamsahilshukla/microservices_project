@@ -171,6 +171,10 @@ The User Service is implemented as a microservice using Node.js and MongoDB, fol
 4. **Delete User** - `DELETE /api/user/:id`
    - Delete a user by their unique ID.
 
+## Postman Collection 
+
+[Link](https://api.postman.com/collections/27071895-4a9637cc-4c71-4b0f-b6bf-b9d1851533c3?access_key=PMAT-01HBR60NEYY38DKC1B5HY7HE56)
+
 ## Architecture Diagram
 
 [Microservices Architecture Diagram](https://www.edrawmax.com/online/share.html?code=6656db5a60ee11ee9eb70a951ba8b83d)
