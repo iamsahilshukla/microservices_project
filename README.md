@@ -73,10 +73,9 @@ The Content Service follows a microservices architecture, using Node.js and Mong
 
 7. **Delete Content** - `DELETE /api/content/:id`
    - Delete content by its unique ID.
-
-### API Documentation
-
-For detailed API documentation, refer to the Swagger documentation for the Content Service.
+  
+8. **Ingest Content** - `POST /api/content/ingest`
+   - Ingest data present inside data .csv .
 
 ## User Interaction Service
 
@@ -119,10 +118,18 @@ The User Interaction Service is a microservice implemented using Node.js and Mon
 
 5. **Read User Interactions by Content** - `GET /api/user-interaction/content/:contentId`
    - Retrieve user interactions related to a specific content item.
-
-### API Documentation
-
-For detailed API documentation, refer to the Swagger documentation for the User Interaction Service.
+  
+6. **Record User Interactions by Like ** - `POST /api/user-interaction/like`
+   -  Record user interactions, Likes,
+   -  Request Body:
+     - `userId`: Identifier of the user
+     - `contentId`: Identifier of the content
+       
+7. **Record User Interactions by Like ** - `POST /api/user-interaction/read`
+   -  Record user interactions, Read,
+   -  Request Body:
+     - `userId`: Identifier of the user
+     - `contentId`: Identifier of the content
 
 ## User Service
 
@@ -163,10 +170,6 @@ The User Service is implemented as a microservice using Node.js and MongoDB, fol
 
 4. **Delete User** - `DELETE /api/user/:id`
    - Delete a user by their unique ID.
-
-### API Documentation
-
-For detailed API documentation, refer to the Swagger documentation for the User Service.
 
 ## Architecture Diagram
 
