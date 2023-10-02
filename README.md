@@ -170,7 +170,7 @@ For detailed API documentation, refer to the Swagger documentation for the User 
 
 ## Architecture Diagram
 
-![Microservices Architecture Diagram](https://www.edrawmax.com/online/share.html?code=6656db5a60ee11ee9eb70a951ba8b83d)
+[Microservices Architecture Diagram](https://www.edrawmax.com/online/share.html?code=6656db5a60ee11ee9eb70a951ba8b83d)
 
 This architecture diagram illustrates the interactions between the Content, User Interaction, and User services, as well as their connections to the respective databases.
 
