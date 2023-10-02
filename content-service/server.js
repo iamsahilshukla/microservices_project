@@ -19,6 +19,7 @@ app.use(bodyParser.json());
 app.get('/', (req, res) => {
   res.send('Welcome to the Content Service');
 });
+
 app.use('/api/content', contentRoutes);
 
 // Error handling middleware

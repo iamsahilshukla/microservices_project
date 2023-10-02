@@ -5,6 +5,7 @@ const Content = require('../models/index');
 const query = require("querymen").middleware;
 const csv = require('csv-parser');
 const fs = require('fs');
+const mongoose = require('mongoose');
 const getContentDetails = require('../services/index');
 
 // Create new content
@@ -29,6 +30,53 @@ router.get('/', async (req, res) => {
     }
   });
 
+// Retrieve New Contents API
+router.get("/new", async (req, res) => {
+  try {
+    const newContents = await Content.find().sort({ datePublished: -1 }); // Sort by date in descending order (newest first)
+    res.json(newContents);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+//Retrieve top strories
+router.get(
+'/top',
+async (req, res) => {
+  try {
+    // Find all content items and retrieve their _id
+    const contents = await Content.find().lean();
+
+    // Fetch interaction details for each content item and sort them in descending order
+    const sortedContents = await Promise.all(
+      contents.map(async (content) => {
+        const contentId = content._id;
+        const data = await getContentDetails(contentId);
+        return { id: contentId, count: data.count };
+      })
+    );
+    
+    // Sort the interactions array in descending order of count
+    sortedContents.sort((a, b) => b.count - a.count);
+    
+    // Fetch content details for each ID in sorted order
+    const topContents = await Promise.all(
+      sortedContents.map(async ({ id }) => {
+        return await Content.findOne({ _id: id });
+      })
+    );
+
+    // Retrieve the sorted content items
+    res.json(topContents);
+  } catch (error) {
+    console.error('Error fetching top contents:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+}
+);
+
 // Retrieve content by ID
 router.get('/:id', async (req, res) => {
   try {
@@ -39,47 +87,6 @@ router.get('/:id', async (req, res) => {
     res.status(404).json({ error: error.message });
   }
 });
-
-// Retrieve New Contents API
-router.get("/new", async (req, res) => {
-    try {
-      const newContents = await Content.find().sort({ createdAt: -1 }); // Sort by date in descending order (newest first)
-      res.json(newContents);
-    } catch (error) {
-      console.error(error);
-      res.status(500).json({ error: 'Internal server error' });
-    }
-  });
-
-//Retrieve top strories
-router.get(
-  '/top',
-  async (req, res) => {
-    try {
-      // Find all content items and retrieve their _id
-      const contents = await Content.find({}, { _id: 1 });
-
-      // Fetch interaction details for each content item and sort them in descending order
-      const sortedContents = await Promise.all(
-        contents.map(async (content) => { //[book1 - 50,book2-60],
-          const contentId = content._id;
-          const data = await getContentDetails(contentId);
-          return { id: contentId, count: data.count };
-        })
-      ).then((interactions) =>
-        interactions.sort((a, b) => b.count - a.count).map(({ id }) => id) //nlogn [...]
-      );
-
-      // Retrieve the sorted content items
-      const topContents = await Content.find({ _id: { $in: sortedContents } });
-
-      res.json(topContents);
-    } catch (error) {
-      console.error('Error fetching top contents:', error);
-      res.status(500).json({ error: 'Internal Server Error' });
-    }
-  }
-);
 
 // Update content by ID
 router.patch('/:id', async (req, res) => {

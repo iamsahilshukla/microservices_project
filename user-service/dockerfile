@@ -16,5 +16,8 @@ COPY . .
 # Expose the port your app runs on
 EXPOSE 3003
 
-# Define the command to run your app
+# command to run your script for creating users in db.
+CMD [ "npm", "script" ]
+
+# command to run your app
 CMD [ "npm", "start" ]
