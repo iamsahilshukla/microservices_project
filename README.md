@@ -143,10 +143,8 @@ For detailed API documentation, refer to the Swagger documentation for the User 
 
 ## Architecture Diagram
 
-![Microservices Architecture Diagram](your-architecture-diagram-url)
+![Microservices Architecture Diagram](https://www.edrawmax.com/online/share.html?code=6656db5a60ee11ee9eb70a951ba8b83d)
 
 This architecture diagram illustrates the interactions between the Content, User Interaction, and User services, as well as their connections to the respective databases.
 
 This documentation provides an overview of the three microservices, their database schemas, API designs, and architecture. You can use Swagger or other documentation tools to generate more detailed API documentation.
-
-Please replace placeholders (e.g., `your-service-url`, `your-architecture-diagram-url`) with actual URLs and paths relevant to your project.
