@@ -119,13 +119,13 @@ The User Interaction Service is a microservice implemented using Node.js and Mon
 5. **Read User Interactions by Content** - `GET /api/user-interaction/content/:contentId`
    - Retrieve user interactions related to a specific content item.
   
-6. **Record User Interactions by Like ** - `POST /api/user-interaction/like`
+6. **Record User Interactions by Like** - `POST /api/user-interaction/like`
    -  Record user interactions, Likes,
    -  Request Body:
      - `userId`: Identifier of the user
      - `contentId`: Identifier of the content
        
-7. **Record User Interactions by Like ** - `POST /api/user-interaction/read`
+7. **Record User Interactions by Like** - `POST /api/user-interaction/read`
    -  Record user interactions, Read,
    -  Request Body:
      - `userId`: Identifier of the user
