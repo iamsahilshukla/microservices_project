@@ -1,5 +1,32 @@
 # Microservices Documentation
 
+## Getting Started
+
+To run the microservices and test the functionality, follow these steps:
+
+1. Build and Start Services with Docker Compose:
+
+   Use the following command to build and start all services with Docker Compose:
+
+   docker-compose up --build
+
+This command will run all services, including the user service, content service, and user interaction service, each in separate containers. Additionally, a shared database will be used for these services.
+
+2. Dummy User and Data Ingestion:
+
+Inside the Docker containers, there's a script that automates the process of creating dummy users. The script is executed during startup.
+
+3. User Interaction Testing (Like/Read):
+
+To test the "Like" and "Read" interactions, you can use the User Interaction API. Here's how:
+
+- **Like Interaction**: Users can send a POST request with their userId and contentId to record a "Like" event. Note that each user can perform only one "Like."
+- **Read Interaction**: Similar to "Like," users can send a POST request with their userId and contentId to record a "Read" event. Each user can perform only one "Read."
+
+[Optionally, provide sample API requests for "Like" and "Read" interactions as examples.]
+
+After following these steps, you can interact with the microservices and test their functionality.
+
 ## Content Service
 
 ### Overview
