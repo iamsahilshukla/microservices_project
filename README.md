@@ -173,7 +173,7 @@ The User Service is implemented as a microservice using Node.js and MongoDB, fol
 
 ## Postman Collection 
 
-[Link](https://api.postman.com/collections/27071895-4a9637cc-4c71-4b0f-b6bf-b9d1851533c3?access_key=PMAT-01HBR60NEYY38DKC1B5HY7HE56)
+[Link](https://api.postman.com/collections/27071895-b58bf187-ff29-43cf-b658-22e2d8df0da7?access_key=PMAT-01HBR6GZXF6S1AH1WWP4T9KXKG)
 
 ## Architecture Diagram
 
